@@ -16,68 +16,59 @@
       background: linear-gradient(160deg, #0d3d00 0%, #1e7a00 40%, #9ee493 100%);
       min-height: 100vh; color: #fff; padding: 2rem;
     }
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: 800px; margin: 0 auto 2.5rem auto;
-    }
+    header { display: flex; align-items: center; justify-content: space-between; max-width: 860px; margin: 0 auto 2rem auto; }
     h1 { font-size: 2.4rem; text-shadow: 1px 2px 0 rgba(0,0,0,0.25); }
     .btn-retour {
-      font-family: var(--police); background: rgba(255,255,255,0.2);
-      color: #fff; border: 2px solid rgba(255,255,255,0.4);
-      padding: 10px 24px; border-radius: 50px;
-      text-decoration: none; font-size: 1rem; transition: background 0.2s;
+      font-family: var(--police); background: rgba(255,255,255,0.2); color: #fff;
+      border: 2px solid rgba(255,255,255,0.4); padding: 10px 24px;
+      border-radius: 50px; text-decoration: none; font-size: 1rem; transition: background 0.2s;
     }
     .btn-retour:hover { background: rgba(255,255,255,0.35); }
-    .hero-section { text-align: center; max-width: 800px; margin: 0 auto 2.5rem auto; }
+    .hero-section { text-align: center; max-width: 860px; margin: 0 auto 2rem auto; }
     .sous-titre { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-top: 0.5rem; }
     .grille {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem; max-width: 800px; margin: 0 auto 2.5rem auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem; max-width: 860px; margin: 0 auto 2rem auto;
     }
     .carte {
-      background: rgba(255,255,255,0.13); border-radius: 20px; padding: 1.5rem;
+      background: rgba(255,255,255,0.13); border-radius: 20px; padding: 1.4rem;
       backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      position: relative;
     }
-    .carte:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
-    .carte-icon { font-size: 2.2rem; margin-bottom: 0.6rem; display: block; }
-    .carte h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: #d4f5cf; }
-    .carte p { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.5; }
-    .section-bloc {
-      max-width: 800px; margin: 0 auto 2.5rem auto;
-      background: rgba(255,255,255,0.12); border-radius: 20px;
-      padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2);
-    }
-    .section-bloc h2 { font-size: 1.5rem; margin-bottom: 1.2rem; color: #d4f5cf; }
-    .programme { display: flex; flex-direction: column; gap: 0.8rem; }
-    .jour-ligne {
-      display: flex; align-items: center; gap: 1rem;
-      background: rgba(255,255,255,0.1); border-radius: 12px; padding: 0.9rem 1.2rem;
-      transition: background 0.2s;
-    }
+    .carte:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    .carte.ouverte { background: rgba(255,255,255,0.25); box-shadow: 0 12px 36px rgba(0,0,0,0.3); transform: none; grid-column: 1 / -1; }
+    .carte-header { display: flex; align-items: center; gap: 0.8rem; }
+    .carte-icon { font-size: 2rem; flex-shrink: 0; }
+    .carte h3 { font-size: 1.15rem; color: #d4f5cf; }
+    .carte .resume { font-size: 0.95rem; color: rgba(255,255,255,0.82); margin-top: 0.5rem; line-height: 1.4; }
+    .indicateur { position: absolute; top: 1rem; right: 1rem; font-size: 1.1rem; transition: transform 0.3s ease; color: rgba(255,255,255,0.5); }
+    .carte.ouverte .indicateur { transform: rotate(45deg); color: #fff; }
+    .carte-detail { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); }
+    .carte-detail p { font-size: 0.95rem; color: rgba(255,255,255,0.92); line-height: 1.6; margin-bottom: 0.6rem; }
+    .carte-detail ul { padding-left: 1.2rem; }
+    .carte-detail li { font-size: 0.93rem; color: rgba(255,255,255,0.88); margin-bottom: 0.4rem; line-height: 1.5; }
+    .tag { display: inline-block; background: var(--green); color: #0d3d00; border-radius: 20px; padding: 3px 12px; font-size: 0.85rem; margin: 0.2rem; font-weight: bold; }
+    .exercice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.6rem; margin-top: 0.8rem; }
+    .exercice-card { background: rgba(255,255,255,0.15); border-radius: 12px; padding: 0.8rem; text-align: center; font-size: 0.88rem; }
+    .exercice-card strong { display: block; margin-bottom: 0.2rem; font-size: 1rem; }
+    /* Programme */
+    .section-bloc { max-width: 860px; margin: 0 auto 2rem auto; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2); }
+    .section-bloc h2 { font-size: 1.4rem; margin-bottom: 1rem; color: #d4f5cf; }
+    .programme { display: flex; flex-direction: column; gap: 0.7rem; }
+    .jour-ligne { display: flex; align-items: flex-start; gap: 1rem; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 0.9rem 1.2rem; cursor: pointer; transition: background 0.2s; }
     .jour-ligne:hover { background: rgba(255,255,255,0.18); }
-    .jour-label {
-      background: var(--green); color: #0d3d00; border-radius: 8px;
-      padding: 4px 12px; font-weight: bold; font-size: 0.9rem;
-      flex-shrink: 0; min-width: 90px; text-align: center;
-    }
+    .jour-label { background: var(--green); color: #0d3d00; border-radius: 8px; padding: 4px 12px; font-weight: bold; font-size: 0.9rem; flex-shrink: 0; min-width: 90px; text-align: center; }
     .jour-content strong { font-size: 1rem; display: block; }
     .jour-content span { font-size: 0.88rem; color: rgba(255,255,255,0.78); }
+    .jour-detail { display: none; margin-top: 0.6rem; font-size: 0.88rem; color: rgba(255,255,255,0.9); line-height: 1.6; }
+    /* Checklist */
     .checklist { display: flex; flex-direction: column; gap: 0.7rem; }
-    .check-item {
-      display: flex; align-items: center; gap: 0.8rem;
-      background: rgba(255,255,255,0.1); border-radius: 12px;
-      padding: 0.8rem 1.1rem; cursor: pointer;
-      transition: background 0.2s; user-select: none;
-    }
+    .check-item { display: flex; align-items: center; gap: 0.8rem; background: rgba(255,255,255,0.1); border-radius: 12px; padding: 0.8rem 1.1rem; cursor: pointer; transition: background 0.2s; user-select: none; }
     .check-item:hover { background: rgba(255,255,255,0.18); }
-    .check-item.fait { background: rgba(158,228,147,0.25); text-decoration: line-through; opacity: 0.75; }
-    .check-box {
-      width: 24px; height: 24px; border-radius: 6px;
-      border: 2px solid rgba(255,255,255,0.5);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: background 0.2s;
-    }
+    .check-item.fait { background: rgba(158,228,147,0.25); opacity: 0.8; }
+    .check-item.fait .check-texte strong { text-decoration: line-through; }
+    .check-box { width: 26px; height: 26px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s; font-size: 1rem; }
     .check-item.fait .check-box { background: var(--green); border-color: var(--green); color: #0d3d00; }
     .check-texte strong { display: block; font-size: 1rem; }
     .check-texte span { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
@@ -109,53 +100,261 @@
       <line x1="100" y1="94" x2="118" y2="110" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
       <ellipse cx="122" cy="112" rx="8" ry="4" fill="#fabc3c" opacity="0.9"/>
       <line x1="130" y1="55" x2="155" y2="55" stroke="#9ee493" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-      <line x1="136" y1="64" x2="160" y2="64" stroke="#9ee493" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
     </svg>
-    <p class="sous-titre">Ton corps est fait pour bouger — donne-lui ce dont il a besoin !</p>
+    <p class="sous-titre">Clique sur une carte ou un jour du programme pour en savoir plus !</p>
   </div>
+
   <div class="grille">
-    <div class="carte"><span class="carte-icon">❤️</span><h3>Cardio</h3><p>Course, vélo, natation, saut à la corde. Renforce ton cœur et améliore ton endurance. 30 min, 3x/semaine.</p></div>
-    <div class="carte"><span class="carte-icon">💪</span><h3>Musculation</h3><p>Pompes, squats, tractions, gainage. Renforce tes muscles, améliore ta posture et booste ton métabolisme.</p></div>
-    <div class="carte"><span class="carte-icon">🧘</span><h3>Étirements</h3><p>Indispensables après l'effort. Préviennent les blessures et accélèrent la récupération musculaire.</p></div>
-    <div class="carte"><span class="carte-icon">🔥</span><h3>Échauffement</h3><p>Jamais sauter l'échauffement ! 5 à 10 min de mouvements légers pour préparer tes muscles.</p></div>
-    <div class="carte"><span class="carte-icon">😴</span><h3>Récupération</h3><p>Tes muscles se renforcent pendant le repos. Alterne les jours de sport et de récupération.</p></div>
-    <div class="carte"><span class="carte-icon">🏆</span><h3>Bienfaits</h3><p>Moins de stress, meilleur sommeil, meilleure concentration, humeur positive — tout bénéfice !</p></div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">❤️</span><h3>Cardio</h3></div>
+      <p class="resume">Renforce ton cœur et booste ton endurance.</p>
+      <div class="carte-detail">
+        <p>Le cardio (ou entraînement cardiovasculaire) améliore l'efficacité de ton cœur à pomper le sang et augmente la capacité de tes poumons. Résultat : tu te fatigues moins vite dans la vie quotidienne.</p>
+        <ul>
+          <li>🎯 Objectif : 150 min d'intensité modérée par semaine (OMS)</li>
+          <li>💓 Zone cible : 60–80% de ta fréquence cardiaque maximale</li>
+          <li>📈 Progression : commence par 20 min 3x/semaine, augmente graduellement</li>
+        </ul>
+        <div class="exercice-grid">
+          <div class="exercice-card"><strong>🏃 Course</strong>Brûle ~400 kcal/h</div>
+          <div class="exercice-card"><strong>🚴 Vélo</strong>Doux pour les genoux</div>
+          <div class="exercice-card"><strong>🏊 Natation</strong>Travaille tout le corps</div>
+          <div class="exercice-card"><strong>🪢 Corde à sauter</strong>Intense, peu d'espace</div>
+        </div>
+        <div style="margin-top:0.8rem;"><span class="tag">Endurance</span><span class="tag">Cœur</span><span class="tag">Calories</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">💪</span><h3>Musculation</h3></div>
+      <p class="resume">Construis ta force et améliore ta posture.</p>
+      <div class="carte-detail">
+        <p>La musculation ne nécessite pas forcément une salle de sport. Avec ton poids de corps, tu peux faire des exercices très efficaces n'importe où.</p>
+        <ul>
+          <li>🔄 Principe de surcharge progressive : augmente la difficulté chaque semaine</li>
+          <li>😴 Les muscles se construisent pendant le repos, pas l'effort</li>
+          <li>🍗 Mange des protéines dans les 30–60 min après l'effort</li>
+          <li>⚠️ Technique > Poids : mieux vaut 10 pompes parfaites que 30 bâclées</li>
+        </ul>
+        <div class="exercice-grid">
+          <div class="exercice-card"><strong>💪 Pompes</strong>Pectoraux, triceps, épaules</div>
+          <div class="exercice-card"><strong>🦵 Squats</strong>Cuisses, fessiers, dos</div>
+          <div class="exercice-card"><strong>🧗 Tractions</strong>Dos, biceps, abdos</div>
+          <div class="exercice-card"><strong>🛡️ Gainage</strong>Abdos, stabilité globale</div>
+        </div>
+        <div style="margin-top:0.8rem;"><span class="tag">Force</span><span class="tag">Posture</span><span class="tag">Métabolisme</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">🧘</span><h3>Étirements</h3></div>
+      <p class="resume">Indispensables pour récupérer et éviter les blessures.</p>
+      <div class="carte-detail">
+        <p>Les étirements améliorent la souplesse, réduisent les douleurs musculaires post-effort (DOMS) et permettent une meilleure récupération entre les séances.</p>
+        <ul>
+          <li>⚠️ Jamais d'étirements statiques AVANT l'effort (risque de blessure)</li>
+          <li>✅ Étirements statiques APRÈS l'effort : tenus 30–60 secondes</li>
+          <li>🔄 Étirements dynamiques AVANT : mouvements doux et contrôlés</li>
+          <li>🧘 Le yoga combine étirements, force et relaxation — parfait !</li>
+          <li>😴 S'étirer avant de dormir améliore aussi la qualité du sommeil</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Souplesse</span><span class="tag">Récupération</span><span class="tag">Prévention</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">🔥</span><h3>Échauffement</h3></div>
+      <p class="resume">5–10 min qui peuvent t'éviter des semaines de blessure.</p>
+      <div class="carte-detail">
+        <p>L'échauffement prépare progressivement ton corps à l'effort en augmentant la température musculaire, la fréquence cardiaque et la lubrification des articulations.</p>
+        <ul>
+          <li>🕐 Durée : 5 à 10 minutes avant chaque séance</li>
+          <li>🚶 Commence par une marche rapide ou du jogging léger (3 min)</li>
+          <li>🔄 Rotations des chevilles, genoux, hanches, épaules (2 min)</li>
+          <li>🦵 Montées de genoux, talons-fesses, fentes (3 min)</li>
+          <li>📈 Augmente l'intensité progressivement</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Sécurité</span><span class="tag">Performance</span><span class="tag">Articulations</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">😴</span><h3>Récupération</h3></div>
+      <p class="resume">Tes muscles grandissent pendant le repos, pas l'effort.</p>
+      <div class="carte-detail">
+        <p>La récupération est la phase où ton corps répare les microdéchirures musculaires causées par l'effort et les rend plus solides. Négliger la récupération = progression nulle ou régression.</p>
+        <ul>
+          <li>😴 Dors 8 à 10h les nuits après une séance intense</li>
+          <li>💧 Réhydrate-toi bien (eau + électrolytes si effort long)</li>
+          <li>🍌 Mange des glucides et protéines dans les 30 min post-effort</li>
+          <li>❄️ Bain froid ou alternance chaud/froid pour réduire l'inflammation</li>
+          <li>🔄 Récupération active : marche légère ou yoga le lendemain</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Repos</span><span class="tag">Nutrition</span><span class="tag">Croissance</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">🏆</span><h3>Bienfaits du sport</h3></div>
+      <p class="resume">30 min de sport = 30 min investies dans ta santé.</p>
+      <div class="carte-detail">
+        <p>Le sport est le médicament le plus puissant et le moins cher qui existe. Ses effets sont prouvés scientifiquement sur presque tous les aspects de la santé.</p>
+        <ul>
+          <li>🧠 +20% de mémoire et concentration après 30 min de cardio</li>
+          <li>😊 Libère dopamine, sérotonine, endorphines — le "runner's high"</li>
+          <li>😴 Améliore la qualité du sommeil de 65% (National Sleep Foundation)</li>
+          <li>❤️ Réduit de 35% le risque de maladies cardiovasculaires</li>
+          <li>🛡️ Renforce le système immunitaire</li>
+          <li>⏳ Ralentit le vieillissement cellulaire</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Santé</span><span class="tag">Humeur</span><span class="tag">Longévité</span></div>
+      </div>
+    </div>
+
   </div>
+
   <div class="section-bloc">
-    <h2>📅 Programme débutant — 5 jours</h2>
+    <h2>📅 Programme débutant — clique sur un jour pour voir les exercices en détail</h2>
     <div class="programme">
-      <div class="jour-ligne"><div class="jour-label">Lundi</div><div class="jour-content"><strong>💪 Haut du corps</strong><span>Pompes 3×10 · Dips 3×10 · Gainage 3×30s</span></div></div>
-      <div class="jour-ligne"><div class="jour-label">Mardi</div><div class="jour-content"><strong>❤️ Cardio léger</strong><span>30 min de marche rapide ou vélo à intensité modérée</span></div></div>
-      <div class="jour-ligne"><div class="jour-label">Mercredi</div><div class="jour-content"><strong>😴 Repos actif</strong><span>Étirements 20 min + balade tranquille</span></div></div>
-      <div class="jour-ligne"><div class="jour-label">Jeudi</div><div class="jour-content"><strong>🦵 Bas du corps</strong><span>Squats 3×15 · Fentes 3×10 · Mollets 3×20</span></div></div>
-      <div class="jour-ligne"><div class="jour-label">Vendredi</div><div class="jour-content"><strong>🔥 Full body</strong><span>Burpees 3×8 · Mountain climbers 3×20 · Gainage 3×45s</span></div></div>
-      <div class="jour-ligne" style="opacity:0.6;"><div class="jour-label" style="background:rgba(255,255,255,0.2);color:#fff;">Week-end</div><div class="jour-content"><strong>🎉 Activité plaisir</strong><span>Football, natation, danse — ce que tu aimes !</span></div></div>
+      <div class="jour-ligne">
+        <div class="jour-label">Lundi</div>
+        <div class="jour-content">
+          <strong>💪 Haut du corps</strong>
+          <span>Pompes · Dips · Gainage — clique pour les séries</span>
+          <div class="jour-detail">
+            <strong>Échauffement (5 min)</strong> : jogging sur place + rotations des épaules<br><br>
+            🔹 Pompes : 3 séries × 10 répétitions (repos 60s entre chaque)<br>
+            🔹 Dips sur chaise : 3 séries × 10 répétitions<br>
+            🔹 Gainage frontal : 3 séries × 30 secondes<br>
+            🔹 Superman (dos) : 3 séries × 12 répétitions<br><br>
+            <strong>Étirements (5 min)</strong> : pectoraux, triceps, épaules
+          </div>
+        </div>
+      </div>
+      <div class="jour-ligne">
+        <div class="jour-label">Mardi</div>
+        <div class="jour-content">
+          <strong>❤️ Cardio léger</strong>
+          <span>30 min marche rapide ou vélo — clique pour les détails</span>
+          <div class="jour-detail">
+            30 minutes à intensité modérée : tu dois pouvoir parler mais pas chanter.<br><br>
+            🔹 Option A : marche rapide en extérieur (objectif 4–5 km)<br>
+            🔹 Option B : vélo à intensité modérée<br>
+            🔹 Option C : 30 min de danse libre chez toi<br><br>
+            💡 Profites-en pour écouter un podcast ou de la musique !
+          </div>
+        </div>
+      </div>
+      <div class="jour-ligne">
+        <div class="jour-label">Mercredi</div>
+        <div class="jour-content">
+          <strong>😴 Repos actif</strong>
+          <span>Étirements + balade — clique pour le programme</span>
+          <div class="jour-detail">
+            Le repos actif permet de récupérer sans être totalement inactif.<br><br>
+            🔹 Étirements globaux : 20 minutes (jambes, dos, épaules, hanches)<br>
+            🔹 Balade tranquille de 20–30 minutes<br>
+            🔹 Ou séance de yoga débutant (cherche "yoga débutant 20 min" sur YouTube)<br><br>
+            💤 C'est aussi le bon moment pour te coucher plus tôt !
+          </div>
+        </div>
+      </div>
+      <div class="jour-ligne">
+        <div class="jour-label">Jeudi</div>
+        <div class="jour-content">
+          <strong>🦵 Bas du corps</strong>
+          <span>Squats · Fentes · Mollets — clique pour les séries</span>
+          <div class="jour-detail">
+            <strong>Échauffement (5 min)</strong> : montées de genoux + rotations des hanches<br><br>
+            🔹 Squats : 3 séries × 15 répétitions (dos droit, genoux dans l'axe)<br>
+            🔹 Fentes alternées : 3 séries × 10 répétitions par jambe<br>
+            🔹 Élévations de mollets : 3 séries × 20 répétitions<br>
+            🔹 Pont fessier : 3 séries × 15 répétitions<br><br>
+            <strong>Étirements (5 min)</strong> : quadriceps, ischios, fessiers, mollets
+          </div>
+        </div>
+      </div>
+      <div class="jour-ligne">
+        <div class="jour-label">Vendredi</div>
+        <div class="jour-content">
+          <strong>🔥 Full body</strong>
+          <span>Burpees · Mountain climbers · Gainage — clique pour les séries</span>
+          <div class="jour-detail">
+            <strong>Échauffement (5 min)</strong> : jumping jacks + mouvements dynamiques<br><br>
+            🔹 Burpees : 3 séries × 8 répétitions (l'exercice roi du full body)<br>
+            🔹 Mountain climbers : 3 séries × 20 répétitions (10 par jambe)<br>
+            🔹 Gainage latéral : 3 séries × 30 secondes de chaque côté<br>
+            🔹 Jump squats : 3 séries × 10 répétitions<br><br>
+            <strong>Étirements (10 min)</strong> : tout le corps — tu l'as bien mérité !
+          </div>
+        </div>
+      </div>
+      <div class="jour-ligne" style="opacity:0.65;">
+        <div class="jour-label" style="background:rgba(255,255,255,0.2);color:#fff;">Week-end</div>
+        <div class="jour-content">
+          <strong>🎉 Activité plaisir</strong>
+          <span>Football, natation, danse, escalade — ce que tu aimes !</span>
+          <div class="jour-detail">
+            Le week-end est fait pour les activités qui te procurent du plaisir.<br><br>
+            🎾 Tennis · ⚽ Football · 🏊 Natation · 🧗 Escalade<br>
+            🚵 VTT · 💃 Danse · 🥊 Boxe · 🏸 Badminton<br><br>
+            💡 Le meilleur sport est celui que tu fais régulièrement parce que tu l'aimes !
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="section-bloc">
     <h2>✅ Checklist de ma séance</h2>
     <div class="checklist">
-      <div class="check-item"><div class="check-box"></div><div class="check-texte"><strong>🔥 Échauffement</strong><span>5–10 min de mouvements légers</span></div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-texte"><strong>🔥 Échauffement</strong><span>5–10 min de mouvements progressifs</span></div></div>
       <div class="check-item"><div class="check-box"></div><div class="check-texte"><strong>💪 Exercice principal</strong><span>Selon le programme du jour</span></div></div>
       <div class="check-item"><div class="check-box"></div><div class="check-texte"><strong>💧 Hydratation</strong><span>Boire régulièrement pendant l'effort</span></div></div>
       <div class="check-item"><div class="check-box"></div><div class="check-texte"><strong>🧘 Étirements</strong><span>10 min après l'effort</span></div></div>
       <div class="check-item"><div class="check-box"></div><div class="check-texte"><strong>🍌 Collation post-effort</strong><span>Protéines + glucides dans les 30 min</span></div></div>
     </div>
     <div class="progress-wrap">
-      <div class="progress-label"><span>Progression</span><span id="pct-label">0 / 5</span></div>
+      <div class="progress-label"><span>Progression de la séance</span><span id="pct-label">0 / 5</span></div>
       <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
       <p class="compteur-seance" id="msg-seance">Coche les étapes au fur et à mesure !</p>
     </div>
   </div>
+
   <script>
+    // Cartes expansibles
+    $(".carte").click(function() {
+      const isOpen = $(this).hasClass("ouverte");
+      $(".carte").removeClass("ouverte");
+      $(".carte-detail").slideUp(300);
+      if (!isOpen) {
+        $(this).addClass("ouverte");
+        $(this).find(".carte-detail").slideDown(350);
+        $("html, body").animate({ scrollTop: $(this).offset().top - 80 }, 400);
+      }
+    });
+    // Programme jours cliquables
+    $(".jour-ligne").click(function() {
+      const detail = $(this).find(".jour-detail");
+      $(".jour-detail").not(detail).slideUp(250);
+      detail.slideToggle(300);
+    });
+    // Checklist
     const msgs = ["Coche les étapes !","C'est parti ! 💪","Continue !","Presque fini !","Encore un effort !","🎉 Séance terminée !"];
-    $(".check-item").click(function(){
+    $(".check-item").click(function() {
       $(this).toggleClass("fait");
       $(this).find(".check-box").text($(this).hasClass("fait") ? "✓" : "");
       const faits = $(".check-item.fait").length;
       const total = $(".check-item").length;
-      $("#pct-label").text(faits+" / "+total);
-      $("#prog-fill").css("width",(faits/total*100)+"%");
+      $("#pct-label").text(faits + " / " + total);
+      $("#prog-fill").css("width", (faits / total * 100) + "%");
       $("#msg-seance").text(msgs[faits]);
     });
   </script>
