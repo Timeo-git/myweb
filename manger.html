@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dekko&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
     :root { --gold: #fabc3c; --police: "Dekko", cursive; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,50 +18,57 @@
     }
     header {
       display: flex; align-items: center; justify-content: space-between;
-      max-width: 800px; margin: 0 auto 2.5rem auto;
+      max-width: 860px; margin: 0 auto 2rem auto;
     }
     h1 { font-size: 2.4rem; text-shadow: 1px 2px 0 rgba(0,0,0,0.2); }
     .btn-retour {
       font-family: var(--police); background: rgba(255,255,255,0.2);
       color: #fff; border: 2px solid rgba(255,255,255,0.4);
-      padding: 10px 24px; border-radius: 50px;
-      text-decoration: none; font-size: 1rem; transition: background 0.2s;
+      padding: 10px 24px; border-radius: 50px; text-decoration: none;
+      font-size: 1rem; transition: background 0.2s;
     }
     .btn-retour:hover { background: rgba(255,255,255,0.35); }
-    .hero-section { text-align: center; max-width: 800px; margin: 0 auto 2.5rem auto; }
+    .hero-section { text-align: center; max-width: 860px; margin: 0 auto 2rem auto; }
     .sous-titre { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-top: 0.5rem; }
     .grille {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem; max-width: 800px; margin: 0 auto 2.5rem auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem; max-width: 860px; margin: 0 auto 2rem auto;
     }
     .carte {
-      background: rgba(255,255,255,0.15); border-radius: 20px; padding: 1.5rem;
+      background: rgba(255,255,255,0.15); border-radius: 20px; padding: 1.4rem;
       backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.25);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      position: relative; overflow: hidden;
     }
-    .carte:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
-    .carte-icon { font-size: 2.2rem; margin-bottom: 0.6rem; display: block; }
-    .carte h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: #fff3cd; }
-    .carte p { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.5; }
+    .carte:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    .carte.ouverte { background: rgba(255,255,255,0.28); box-shadow: 0 12px 36px rgba(0,0,0,0.3); transform: none; grid-column: 1 / -1; }
+    .carte-header { display: flex; align-items: center; gap: 0.8rem; }
+    .carte-icon { font-size: 2rem; flex-shrink: 0; }
+    .carte h3 { font-size: 1.15rem; color: #fff3cd; }
+    .carte .resume { font-size: 0.95rem; color: rgba(255,255,255,0.82); margin-top: 0.5rem; line-height: 1.4; }
+    .indicateur { position: absolute; top: 1rem; right: 1rem; font-size: 1.1rem; transition: transform 0.3s ease; color: rgba(255,255,255,0.5); }
+    .carte.ouverte .indicateur { transform: rotate(45deg); color: #fff; }
+    .carte-detail { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); }
+    .carte-detail p { font-size: 0.95rem; color: rgba(255,255,255,0.92); line-height: 1.6; margin-bottom: 0.6rem; }
+    .carte-detail ul { padding-left: 1.2rem; }
+    .carte-detail li { font-size: 0.93rem; color: rgba(255,255,255,0.88); margin-bottom: 0.4rem; line-height: 1.5; }
+    .tag { display: inline-block; background: var(--gold); color: #5a3a00; border-radius: 20px; padding: 3px 12px; font-size: 0.85rem; margin: 0.2rem; font-weight: bold; }
+    .aliments { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; }
+    .aliment { background: rgba(255,255,255,0.2); border-radius: 12px; padding: 5px 14px; font-size: 0.88rem; }
     .section-bloc {
-      max-width: 800px; margin: 0 auto 2.5rem auto;
+      max-width: 860px; margin: 0 auto 2rem auto;
       background: rgba(255,255,255,0.12); border-radius: 20px;
       padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2);
     }
-    .section-bloc h2 { font-size: 1.5rem; margin-bottom: 1.2rem; color: #fff3cd; }
-    .repas-ligne {
-      display: flex; gap: 1rem; align-items: flex-start;
-      padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+    .section-bloc h2 { font-size: 1.4rem; margin-bottom: 1rem; color: #fff3cd; }
+    .repas-ligne { display: flex; gap: 1rem; align-items: flex-start; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
     .repas-ligne:last-child { border-bottom: none; }
     .repas-emoji { font-size: 1.8rem; flex-shrink: 0; }
     .repas-texte strong { font-size: 1.05rem; display: block; margin-bottom: 0.2rem; }
     .repas-texte span { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+    .repas-detail { display: none; margin-top: 0.6rem; font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
     .assiette { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-    .assiette-part {
-      flex: 1; min-width: 140px; background: rgba(255,255,255,0.15);
-      border-radius: 14px; padding: 1rem; text-align: center;
-    }
+    .assiette-part { flex: 1; min-width: 140px; background: rgba(255,255,255,0.15); border-radius: 14px; padding: 1rem; text-align: center; }
     .assiette-part .pct { font-size: 2rem; font-weight: bold; display: block; }
     .assiette-part p { font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-top: 0.3rem; }
   </style>
@@ -77,43 +85,38 @@
       <rect x="50" y="60" width="8" height="28" rx="4" fill="#fe5f55" transform="rotate(-15 50 60)"/>
       <line x1="52" y1="58" x2="48" y2="50" stroke="#9ee493" stroke-width="2"/>
       <circle cx="95" cy="62" r="10" fill="#9ee493"/>
-      <circle cx="87" cy="66" r="7"  fill="#9ee493"/>
+      <circle cx="87" cy="66" r="7" fill="#9ee493"/>
       <circle cx="103" cy="68" r="7" fill="#9ee493"/>
       <rect x="93" y="72" width="4" height="12" rx="2" fill="#7a3500"/>
-      <rect x="68" y="75" width="18" height="12" rx="6" fill="#fabc3c" opacity="0.9"/>
-      <text x="70" y="85" font-size="9" fill="#5a3a00">poulet</text>
       <line x1="20" y1="40" x2="20" y2="120" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
       <line x1="16" y1="40" x2="16" y2="60" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
       <line x1="24" y1="40" x2="24" y2="60" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
       <line x1="140" y1="40" x2="140" y2="120" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
-      <path d="M70 20 Q73 14 70 8" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
-      <path d="M80 18 Q83 12 80 6" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
-      <path d="M90 20 Q93 14 90 8" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
     </svg>
-    <p class="sous-titre">Tu es ce que tu manges — fais-en quelque chose de délicieux et d'équilibré !</p>
+    <p class="sous-titre">Clique sur une carte pour en savoir plus !</p>
   </div>
+
   <div class="grille">
-    <div class="carte"><span class="carte-icon">💪</span><h3>Protéines</h3><p>Construisent tes muscles. Sources : poulet, œufs, poisson, lentilles, tofu. Vise 1g par kg de ton poids chaque jour.</p></div>
-    <div class="carte"><span class="carte-icon">⚡</span><h3>Glucides</h3><p>Le carburant de ton cerveau et de tes muscles. Préfère les glucides complexes : riz, pâtes, pain complet, avoine.</p></div>
-    <div class="carte"><span class="carte-icon">🥑</span><h3>Bonnes graisses</h3><p>Avocats, noix, huile d'olive et poissons gras protègent le cœur et le cerveau. Indispensables au quotidien !</p></div>
-    <div class="carte"><span class="carte-icon">🌈</span><h3>Vitamines</h3><p>Mange des légumes et fruits de toutes les couleurs pour un maximum de vitamines, minéraux et antioxydants.</p></div>
-    <div class="carte"><span class="carte-icon">💧</span><h3>Hydratation</h3><p>L'eau représente 60% de ton corps. Bois 1,5 à 2 litres par jour, plus si tu fais du sport. Évite les sodas sucrés.</p></div>
-    <div class="carte"><span class="carte-icon">🍓</span><h3>5 fruits & légumes</h3><p>L'objectif est 5 portions de fruits et légumes par jour. Frais, congelés ou en conserve comptent tous !</p></div>
-  </div>
-  <div class="section-bloc">
-    <h2>🍳 Idées de repas équilibrés</h2>
-    <div class="repas-ligne"><span class="repas-emoji">🌅</span><div class="repas-texte"><strong>Petit-déjeuner</strong><span>Flocons d'avoine + banane + lait · ou · Œufs brouillés + pain complet + jus d'orange</span></div></div>
-    <div class="repas-ligne"><span class="repas-emoji">☀️</span><div class="repas-texte"><strong>Déjeuner</strong><span>Riz + poulet grillé + brocolis · ou · Salade de lentilles + feta + tomates cerises</span></div></div>
-    <div class="repas-ligne"><span class="repas-emoji">🍎</span><div class="repas-texte"><strong>Collation</strong><span>Une poignée d'amandes + une pomme · ou · Yaourt nature + myrtilles</span></div></div>
-    <div class="repas-ligne"><span class="repas-emoji">🌙</span><div class="repas-texte"><strong>Dîner</strong><span>Saumon + patate douce + haricots verts · ou · Soupe de légumes + pain complet + fromage</span></div></div>
-  </div>
-  <div class="section-bloc">
-    <h2>🍽️ L'assiette idéale</h2>
-    <div class="assiette">
-      <div class="assiette-part" style="border: 2px solid #9ee493;"><span class="pct">½</span><strong>Légumes & fruits</strong><p>Brocolis, carottes, épinards, tomates, courgettes...</p></div>
-      <div class="assiette-part" style="border: 2px solid #fabc3c;"><span class="pct">¼</span><strong>Féculents</strong><p>Riz, pâtes, quinoa, pain complet, pomme de terre...</p></div>
-      <div class="assiette-part" style="border: 2px solid #f4afab;"><span class="pct">¼</span><strong>Protéines</strong><p>Poulet, poisson, œufs, légumineuses, tofu...</p></div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">💪</span><h3>Protéines</h3></div>
+      <p class="resume">Le matériau de construction de tes muscles.</p>
+      <div class="carte-detail">
+        <p>Les protéines sont constituées d'acides aminés, les "briques" qui construisent et réparent tous les tissus de ton corps : muscles, peau, cheveux, enzymes, hormones...</p>
+        <p><strong>Objectif :</strong> environ 1 à 1,6g de protéines par kg de poids corporel par jour.</p>
+        <div class="aliments">
+          <span class="aliment">🍗 Poulet</span><span class="aliment">🥚 Œufs</span>
+          <span class="aliment">🐟 Saumon</span><span class="aliment">🫘 Lentilles</span>
+          <span class="aliment">🧀 Fromage blanc</span><span class="aliment">🥛 Lait</span>
+          <span class="aliment">🌱 Tofu</span><span class="aliment">🥜 Amandes</span>
+        </div>
+        <div style="margin-top:0.8rem;"><span class="tag">Muscles</span><span class="tag">Récupération</span><span class="tag">Croissance</span></div>
+      </div>
     </div>
-  </div>
-</body>
-</html>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">⚡</span><h3>Glucides</h3></div>
+      <p class="resume">Le carburant de ton cerveau et de tes muscles.</p>
+      <div class="carte-detail">
