@@ -16,77 +16,68 @@
       background: linear-gradient(160deg, #7a1520 0%, #c43050 40%, #f4afab 100%);
       min-height: 100vh; color: #fff; padding: 2rem;
     }
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: 800px; margin: 0 auto 2.5rem auto;
-    }
+    header { display: flex; align-items: center; justify-content: space-between; max-width: 860px; margin: 0 auto 2rem auto; }
     h1 { font-size: 2.4rem; text-shadow: 1px 2px 0 rgba(0,0,0,0.2); }
     .btn-retour {
-      font-family: var(--police); background: rgba(255,255,255,0.2);
-      color: #fff; border: 2px solid rgba(255,255,255,0.4);
-      padding: 10px 24px; border-radius: 50px;
+      font-family: var(--police); background: rgba(255,255,255,0.2); color: #fff;
+      border: 2px solid rgba(255,255,255,0.4); padding: 10px 24px; border-radius: 50px;
       text-decoration: none; font-size: 1rem; transition: background 0.2s;
     }
     .btn-retour:hover { background: rgba(255,255,255,0.35); }
-    .hero-section { text-align: center; max-width: 800px; margin: 0 auto 2.5rem auto; }
+    .hero-section { text-align: center; max-width: 860px; margin: 0 auto 2rem auto; }
     .sous-titre { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-top: 0.5rem; }
     .grille {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem; max-width: 800px; margin: 0 auto 2.5rem auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem; max-width: 860px; margin: 0 auto 2rem auto;
     }
     .carte {
-      background: rgba(255,255,255,0.15); border-radius: 20px; padding: 1.5rem;
+      background: rgba(255,255,255,0.15); border-radius: 20px; padding: 1.4rem;
       backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.25);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      position: relative;
     }
-    .carte:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
-    .carte-icon { font-size: 2.2rem; margin-bottom: 0.6rem; display: block; }
-    .carte h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: #fff0f0; }
-    .carte p { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.5; }
-    .section-bloc {
-      max-width: 800px; margin: 0 auto 2.5rem auto;
-      background: rgba(255,255,255,0.12); border-radius: 20px;
-      padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2);
-    }
-    .section-bloc h2 { font-size: 1.5rem; margin-bottom: 1.2rem; color: #fff0f0; }
+    .carte:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    .carte.ouverte { background: rgba(255,255,255,0.28); box-shadow: 0 12px 36px rgba(0,0,0,0.3); transform: none; grid-column: 1 / -1; }
+    .carte-header { display: flex; align-items: center; gap: 0.8rem; }
+    .carte-icon { font-size: 2rem; flex-shrink: 0; }
+    .carte h3 { font-size: 1.15rem; color: #fff0f0; }
+    .carte .resume { font-size: 0.95rem; color: rgba(255,255,255,0.82); margin-top: 0.5rem; line-height: 1.4; }
+    .indicateur { position: absolute; top: 1rem; right: 1rem; font-size: 1.1rem; transition: transform 0.3s ease; color: rgba(255,255,255,0.5); }
+    .carte.ouverte .indicateur { transform: rotate(45deg); color: #fff; }
+    .carte-detail { display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2); }
+    .carte-detail p { font-size: 0.95rem; color: rgba(255,255,255,0.92); line-height: 1.6; margin-bottom: 0.6rem; }
+    .carte-detail ul { padding-left: 1.2rem; }
+    .carte-detail li { font-size: 0.93rem; color: rgba(255,255,255,0.88); margin-bottom: 0.4rem; line-height: 1.5; }
+    .tag { display: inline-block; background: var(--rose); color: #7a1520; border-radius: 20px; padding: 3px 12px; font-size: 0.85rem; margin: 0.2rem; font-weight: bold; }
     /* Timer */
     .pomodoro-section {
-      max-width: 800px; margin: 0 auto 2.5rem auto;
+      max-width: 860px; margin: 0 auto 2rem auto;
       background: rgba(255,255,255,0.12); border-radius: 20px;
       padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2); text-align: center;
     }
-    .pomodoro-section h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff0f0; }
+    .pomodoro-section h2 { font-size: 1.4rem; margin-bottom: 1rem; color: #fff0f0; }
     .timer-mode { display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 1.2rem; }
-    .mode-btn {
-      font-family: var(--police); font-size: 0.95rem; padding: 7px 18px;
-      border-radius: 50px; cursor: pointer; border: none;
-      background: rgba(255,255,255,0.15); color: #fff; transition: background 0.2s;
-    }
+    .mode-btn { font-family: var(--police); font-size: 0.95rem; padding: 7px 18px; border-radius: 50px; cursor: pointer; border: none; background: rgba(255,255,255,0.15); color: #fff; transition: background 0.2s; }
     .mode-btn.actif { background: rgba(255,255,255,0.4); font-weight: bold; }
-    .timer-display {
-      font-size: 4rem; font-weight: bold; color: #fff;
-      background: rgba(0,0,0,0.25); border-radius: 16px;
-      padding: 1rem 2.5rem; display: inline-block;
-      margin-bottom: 1.2rem; letter-spacing: 4px;
-    }
+    .timer-display { font-size: 4rem; font-weight: bold; color: #fff; background: rgba(0,0,0,0.25); border-radius: 16px; padding: 1rem 2.5rem; display: inline-block; margin-bottom: 1.2rem; letter-spacing: 4px; }
     .timer-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .tbtn {
-      font-family: var(--police); font-size: 1.1rem;
-      padding: 10px 28px; border: none; border-radius: 50px;
-      cursor: pointer; transition: transform 0.15s;
-    }
+    .tbtn { font-family: var(--police); font-size: 1.1rem; padding: 10px 28px; border: none; border-radius: 50px; cursor: pointer; transition: transform 0.15s; }
     .tbtn:hover { transform: scale(1.05); }
     .tbtn-start { background: #fff; color: #c43050; }
     .tbtn-pause { background: rgba(255,255,255,0.3); color: #fff; border: 2px solid rgba(255,255,255,0.5); }
     .tbtn-reset { background: rgba(0,0,0,0.2); color: #fff; border: 2px solid rgba(255,255,255,0.3); }
     .timer-label { font-size: 1rem; color: rgba(255,255,255,0.75); margin-top: 0.8rem; }
     /* Matrice */
+    .section-bloc { max-width: 860px; margin: 0 auto 2rem auto; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2); }
+    .section-bloc h2 { font-size: 1.4rem; margin-bottom: 1rem; color: #fff0f0; }
     .matrice-labels { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 0.4rem; text-align: center; }
     .matrice-labels span { font-size: 0.9rem; color: rgba(255,255,255,0.7); font-weight: bold; }
     .matrice { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .quad { border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+    .quad { border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); cursor: pointer; transition: background 0.2s; }
+    .quad:hover { background: rgba(255,255,255,0.18); }
     .quad strong { font-size: 1rem; display: block; margin-bottom: 0.3rem; }
     .quad p { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+    .quad-detail { display: none; margin-top: 0.6rem; font-size: 0.85rem; color: rgba(255,255,255,0.9); line-height: 1.5; }
     .quad-do   { border-left: 4px solid #9ee493; }
     .quad-plan { border-left: 4px solid #85c7f2; }
     .quad-del  { border-left: 4px solid #fabc3c; }
@@ -101,30 +92,124 @@
   <div class="hero-section">
     <svg width="200" height="130" viewBox="0 0 200 130" fill="none">
       <rect x="10" y="90" width="180" height="10" rx="5" fill="#fff" opacity="0.3"/>
-      <rect x="20" y="100" width="8" height="28" rx="4" fill="#fff" opacity="0.2"/>
-      <rect x="172" y="100" width="8" height="28" rx="4" fill="#fff" opacity="0.2"/>
       <rect x="55" y="40" width="90" height="52" rx="8" fill="#fff" opacity="0.15"/>
       <rect x="59" y="44" width="82" height="44" rx="6" fill="#1a1a4e" opacity="0.7"/>
       <rect x="63" y="50" width="30" height="4" rx="2" fill="#f4afab" opacity="0.8"/>
       <rect x="63" y="58" width="50" height="4" rx="2" fill="#85c7f2" opacity="0.7"/>
       <rect x="63" y="66" width="38" height="4" rx="2" fill="#9ee493" opacity="0.7"/>
       <rect x="63" y="74" width="44" height="4" rx="2" fill="#fabc3c" opacity="0.7"/>
-      <rect x="93" y="92" width="14" height="8" rx="2" fill="#fff" opacity="0.2"/>
-      <rect x="85" y="98" width="30" height="4" rx="2" fill="#fff" opacity="0.15"/>
-      <rect x="155" y="74" width="22" height="18" rx="6" fill="#fff" opacity="0.25"/>
-      <path d="M177 80 Q187 80 187 87 Q187 92 177 92" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.3"/>
-      <path d="M160 72 Q162 66 160 60" stroke="#fff" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
     </svg>
-    <p class="sous-titre">Travailler intelligemment, c'est autant une question de méthode que d'effort.</p>
+    <p class="sous-titre">Clique sur une carte pour en savoir plus !</p>
   </div>
+
   <div class="grille">
-    <div class="carte"><span class="carte-icon">⏱️</span><h3>Technique Pomodoro</h3><p>25 min de travail intense, 5 min de pause. Après 4 cycles, une grande pause de 20 min. Essaie le timer ci-dessous !</p></div>
-    <div class="carte"><span class="carte-icon">🖥️</span><h3>Espace de travail</h3><p>Bureau rangé, bonne lumière, chaise confortable, notifications coupées. Ton environnement impacte ta concentration.</p></div>
-    <div class="carte"><span class="carte-icon">📋</span><h3>Liste de tâches</h3><p>Écris tes 3 tâches prioritaires au réveil. Commence par la plus difficile. Coche au fur et à mesure !</p></div>
-    <div class="carte"><span class="carte-icon">📵</span><h3>Couper les distractions</h3><p>Le téléphone est l'ennemi n°1 de la concentration. Mode avion pendant les sessions de travail.</p></div>
-    <div class="carte"><span class="carte-icon">☕</span><h3>Les pauses intelligentes</h3><p>Une pause n'est pas du temps perdu. Se lever, s'étirer, boire de l'eau — ton cerveau en a besoin.</p></div>
-    <div class="carte"><span class="carte-icon">🎵</span><h3>Musique & concentration</h3><p>La musique instrumentale ou lo-fi peut améliorer la concentration. Évite les paroles si tu lis ou écris.</p></div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">⏱️</span><h3>Technique Pomodoro</h3></div>
+      <p class="resume">25 min de travail + 5 min de pause = productivité maximale.</p>
+      <div class="carte-detail">
+        <p>La technique Pomodoro, créée par Francesco Cirillo dans les années 80, est basée sur le fait que le cerveau humain peut rester pleinement concentré pendant 25 minutes avant d'avoir besoin d'une pause.</p>
+        <ul>
+          <li>⏱️ 25 minutes de travail sans interruption (1 Pomodoro)</li>
+          <li>☕ 5 minutes de pause (levez-vous, étirez-vous, buvez)</li>
+          <li>🔄 Après 4 Pomodoros : grande pause de 20–30 minutes</li>
+          <li>📵 Pas de téléphone, pas de réseaux sociaux pendant le Pomodoro</li>
+          <li>📝 Note les distractions sur papier et reviens-y après</li>
+        </ul>
+        <p style="margin-top:0.6rem;">🎯 Essaie le timer ci-dessous pour commencer !</p>
+        <div style="margin-top:0.8rem;"><span class="tag">Concentration</span><span class="tag">Productivité</span><span class="tag">Méthode</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">🖥️</span><h3>Espace de travail</h3></div>
+      <p class="resume">Ton environnement impacte directement ta concentration.</p>
+      <div class="carte-detail">
+        <p>Une étude de Princeton University montre que le désordre visuel concurrence l'attention et réduit la capacité de traitement du cerveau. Un bureau rangé = un esprit plus libre.</p>
+        <ul>
+          <li>🧹 Bureau rangé avant chaque session de travail</li>
+          <li>💡 Lumière naturelle ou lampe à 5000K (lumière du jour)</li>
+          <li>🪑 Chaise à bonne hauteur, écran à hauteur des yeux</li>
+          <li>🌡️ Température fraîche 18–22°C (le froid maintient l'éveil)</li>
+          <li>🎧 Casque antibruit si environnement bruyant</li>
+          <li>🪴 Une plante améliore la concentration de 15% (NASA, 1989)</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Environnement</span><span class="tag">Ergonomie</span><span class="tag">Focus</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">📋</span><h3>Liste de tâches</h3></div>
+      <p class="resume">La règle des 3 tâches prioritaires par jour.</p>
+      <div class="carte-detail">
+        <p>Notre cerveau est mauvais pour mémoriser les tâches à faire — il dépense de l'énergie à y penser constamment. Écrire vide la mémoire de travail et libère de l'espace mental.</p>
+        <ul>
+          <li>📝 Le soir ou le matin, note tes 3 tâches les plus importantes</li>
+          <li>🏔️ Commence par la tâche la plus difficile (méthode "Eat the Frog")</li>
+          <li>✅ Coche chaque tâche accomplie — la dopamine te récompense</li>
+          <li>⚡ Découpe les grosses tâches en petites étapes de 20–30 min</li>
+          <li>🎯 3 tâches accomplies > 10 tâches commencées mais non finies</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Organisation</span><span class="tag">Priorités</span><span class="tag">Motivation</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">📵</span><h3>Couper les distractions</h3></div>
+      <p class="resume">Chaque interruption coûte 23 minutes de reconcentration.</p>
+      <div class="carte-detail">
+        <p>Selon une étude de l'Université de Californie, après une interruption, il faut en moyenne <strong>23 minutes et 15 secondes</strong> pour retrouver son niveau de concentration initial.</p>
+        <ul>
+          <li>✈️ Mode avion ou "Ne pas déranger" pendant le travail</li>
+          <li>🔔 Désactive les notifications d'applications non urgentes</li>
+          <li>🚫 Apps de blocage : Cold Turkey, Freedom, Forest</li>
+          <li>👥 Informe ton entourage de tes plages de concentration</li>
+          <li>📧 Consulte les emails seulement 2–3x par jour à horaires fixes</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Focus</span><span class="tag">Téléphone</span><span class="tag">Discipline</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">☕</span><h3>Les pauses intelligentes</h3></div>
+      <p class="resume">Une pause n'est pas du temps perdu — c'est un investissement.</p>
+      <div class="carte-detail">
+        <p>Le cerveau alterne naturellement entre phases de haute concentration et phases de récupération toutes les 90 minutes environ (rythme ultradien). Travailler contre ce cycle épuise.</p>
+        <ul>
+          <li>🚶 Marcher 5 min améliore la créativité de 81% (Stanford)</li>
+          <li>🌿 Regarder par la fenêtre ou aller dehors recharge l'attention</li>
+          <li>💧 Profite des pauses pour boire de l'eau</li>
+          <li>👁️ Règle des 20-20-20 : toutes les 20 min, fixe à 20 pieds (6m) pendant 20s</li>
+          <li>🧘 2 minutes de respiration profonde réduisent le cortisol de 30%</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Récupération</span><span class="tag">Créativité</span><span class="tag">Santé</span></div>
+      </div>
+    </div>
+
+    <div class="carte">
+      <span class="indicateur">＋</span>
+      <div class="carte-header"><span class="carte-icon">🎵</span><h3>Musique & concentration</h3></div>
+      <p class="resume">La bonne musique peut booster ta productivité de 10–15%.</p>
+      <div class="carte-detail">
+        <p>Tout dépend du type de tâche. La musique aide pour les tâches répétitives mais peut nuire pour les tâches créatives ou de lecture intensive.</p>
+        <ul>
+          <li>✅ Musique instrumentale, lo-fi, classique : idéale pour lire/écrire</li>
+          <li>✅ Sons de la nature (pluie, café) : améliore la créativité</li>
+          <li>⚠️ Musique avec paroles : à éviter si tu lis ou écris du texte</li>
+          <li>⚠️ Musique trop forte : augmente le stress et réduit la précision</li>
+          <li>🎧 Playlists recommandées : "lofi hip hop", "study music", "brain.fm"</li>
+        </ul>
+        <div style="margin-top:0.8rem;"><span class="tag">Musique</span><span class="tag">Ambiance</span><span class="tag">Productivité</span></div>
+      </div>
+    </div>
+
   </div>
+
   <div class="pomodoro-section">
     <h2>⏱️ Timer Pomodoro interactif</h2>
     <div class="timer-mode">
@@ -139,29 +224,56 @@
     </div>
     <p class="timer-label" id="timer-label">Prêt à te concentrer ? Lance le timer !</p>
   </div>
+
   <div class="section-bloc">
-    <h2>🎯 Matrice d'Eisenhower</h2>
+    <h2>🎯 Matrice d'Eisenhower — clique sur un cadrant</h2>
     <div class="matrice-labels"><span>⚡ Urgent</span><span>🕐 Pas urgent</span></div>
     <div class="matrice">
-      <div class="quad quad-do"><strong>✅ FAIRE maintenant</strong><p>Important + Urgent — Examen demain, devoir à rendre</p></div>
-      <div class="quad quad-plan"><strong>📅 PLANIFIER</strong><p>Important + Pas urgent — Révisions, sport, projets long terme</p></div>
-      <div class="quad quad-del"><strong>👤 DÉLÉGUER</strong><p>Urgent + Pas important — Certains emails, appels mineurs</p></div>
-      <div class="quad quad-drop"><strong>🗑️ ÉLIMINER</strong><p>Ni urgent ni important — Scroll sans fin, distractions pures</p></div>
+      <div class="quad quad-do">
+        <strong>✅ FAIRE maintenant</strong>
+        <p>Important + Urgent</p>
+        <div class="quad-detail">Exemples : examen demain, devoir à rendre ce soir, urgence médicale, appel urgent d'un prof.<br>👉 Fonce, c'est ta priorité absolue.</div>
+      </div>
+      <div class="quad quad-plan">
+        <strong>📅 PLANIFIER</strong>
+        <p>Important + Pas urgent</p>
+        <div class="quad-detail">Exemples : révisions à long terme, sport régulier, projets personnels, développement de compétences.<br>👉 Bloque des créneaux dans ton agenda maintenant.</div>
+      </div>
+      <div class="quad quad-del">
+        <strong>👤 DÉLÉGUER</strong>
+        <p>Urgent + Pas important</p>
+        <div class="quad-detail">Exemples : certains emails, appels non prioritaires, tâches administratives simples.<br>👉 Fais-le vite ou demande à quelqu'un d'autre.</div>
+      </div>
+      <div class="quad quad-drop">
+        <strong>🗑️ ÉLIMINER</strong>
+        <p>Ni urgent ni important</p>
+        <div class="quad-detail">Exemples : scroll sur les réseaux, jeux vidéo sans limite, regarder des vidéos sans fin.<br>👉 Réduis ces activités au maximum.</div>
+      </div>
     </div>
   </div>
+
   <script>
-    let duree = 25*60, restant = duree, interval = null, enCours = false;
-    function afficher(s) {
-      $("#timer").text(String(Math.floor(s/60)).padStart(2,'0')+":"+String(s%60).padStart(2,'0'));
-    }
-    $("#btn-start").click(function(){
-      if(!enCours){ enCours=true; $("#timer-label").text("🔥 En plein travail ! Reste concentré.");
-        interval=setInterval(function(){ restant--; afficher(restant);
-          if(restant<=0){ clearInterval(interval); enCours=false; $("#timer-label").text("🎉 Temps écoulé ! Prends une pause."); }
-        },1000); }
+    $(".carte").click(function() {
+      const isOpen = $(this).hasClass("ouverte");
+      $(".carte").removeClass("ouverte");
+      $(".carte-detail").slideUp(300);
+      if (!isOpen) {
+        $(this).addClass("ouverte");
+        $(this).find(".carte-detail").slideDown(350);
+        $("html, body").animate({ scrollTop: $(this).offset().top - 80 }, 400);
+      }
     });
-    $("#btn-pause").click(function(){ clearInterval(interval); enCours=false; $("#timer-label").text("⏸ En pause. Reprends quand tu es prêt !"); });
-    $("#btn-reset").click(function(){ clearInterval(interval); enCours=false; restant=duree; afficher(restant); $("#timer-label").text("Prêt à te concentrer ? Lance le timer !"); });
+    $(".quad").click(function(e) {
+      e.stopPropagation();
+      const detail = $(this).find(".quad-detail");
+      $(".quad-detail").not(detail).slideUp(250);
+      detail.slideToggle(300);
+    });
+    let duree = 25*60, restant = duree, interval = null, enCours = false;
+    function afficher(s) { $("#timer").text(String(Math.floor(s/60)).padStart(2,'0')+":"+String(s%60).padStart(2,'0')); }
+    $("#btn-start").click(function(){ if(!enCours){ enCours=true; $("#timer-label").text("🔥 En plein travail !"); interval=setInterval(function(){ restant--; afficher(restant); if(restant<=0){ clearInterval(interval); enCours=false; $("#timer-label").text("🎉 Temps écoulé ! Prends une pause."); }},1000); }});
+    $("#btn-pause").click(function(){ clearInterval(interval); enCours=false; $("#timer-label").text("⏸ En pause."); });
+    $("#btn-reset").click(function(){ clearInterval(interval); enCours=false; restant=duree; afficher(restant); $("#timer-label").text("Prêt ?"); });
     $("#mode-travail").click(function(){ clearInterval(interval); enCours=false; duree=25*60; restant=duree; afficher(restant); $(".mode-btn").removeClass("actif"); $(this).addClass("actif"); });
     $("#mode-pause").click(function(){ clearInterval(interval); enCours=false; duree=5*60; restant=duree; afficher(restant); $(".mode-btn").removeClass("actif"); $(this).addClass("actif"); });
   </script>
