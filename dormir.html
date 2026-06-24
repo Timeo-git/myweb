@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>😴 Dormir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dekko&display=swap" rel="stylesheet">
+  <style>
+    :root { --sky-blue: #85c7f2; --police: "Dekko", cursive; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--police);
+      background: linear-gradient(160deg, #1a1a4e 0%, #2d2d7e 40%, #85c7f2 100%);
+      min-height: 100vh; color: #fff; padding: 2rem;
+    }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 800px; margin: 0 auto 2.5rem auto;
+    }
+    h1 { font-size: 2.4rem; text-shadow: 1px 2px 0 rgba(0,0,0,0.2); }
+    .btn-retour {
+      font-family: var(--police); background: rgba(255,255,255,0.2);
+      color: #fff; border: 2px solid rgba(255,255,255,0.4);
+      padding: 10px 24px; border-radius: 50px; text-decoration: none;
+      font-size: 1rem; transition: background 0.2s;
+    }
+    .btn-retour:hover { background: rgba(255,255,255,0.35); }
+    .hero-section { text-align: center; max-width: 800px; margin: 0 auto 2.5rem auto; }
+    .sous-titre { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-top: 0.5rem; }
+    .grille {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; max-width: 800px; margin: 0 auto 2.5rem auto;
+    }
+    .carte {
+      background: rgba(255,255,255,0.12); border-radius: 20px; padding: 1.5rem;
+      backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.2);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .carte:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    .carte-icon { font-size: 2.2rem; margin-bottom: 0.6rem; display: block; }
+    .carte h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--sky-blue); }
+    .carte p { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.5; }
+    .section-bloc {
+      max-width: 800px; margin: 0 auto 2.5rem auto;
+      background: rgba(255,255,255,0.1); border-radius: 20px;
+      padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .section-bloc h2 { font-size: 1.5rem; margin-bottom: 1.2rem; color: var(--sky-blue); }
+    table { width: 100%; border-collapse: collapse; }
+    th { background: var(--sky-blue); color: #1a1a4e; padding: 10px 16px; text-align: left; }
+    td { padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.12); font-size: 0.95rem; color: rgba(255,255,255,0.9); }
+    tr:hover td { background: rgba(255,255,255,0.07); }
+    th:first-child { border-radius: 10px 0 0 0; } th:last-child { border-radius: 0 10px 0 0; }
+    .phase-ligne { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+    .phase-num {
+      background: var(--sky-blue); color: #1a1a4e; width: 32px; height: 32px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: bold; flex-shrink: 0;
+    }
+    .phase-texte strong { display: block; margin-bottom: 0.2rem; }
+    .phase-texte p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>😴 Dormir</h1>
+    <a href="index.html" class="btn-retour">⬅️ Accueil</a>
+  </header>
+  <div class="hero-section">
+    <svg width="180" height="120" viewBox="0 0 180 120" fill="none">
+      <circle cx="90" cy="60" r="42" fill="#fabc3c" opacity="0.9"/>
+      <circle cx="115" cy="42" r="34" fill="#2d2d7e"/>
+      <circle cx="20"  cy="20" r="4" fill="#fff" opacity="0.9"/>
+      <circle cx="155" cy="15" r="3" fill="#fff" opacity="0.8"/>
+      <circle cx="35"  cy="85" r="2.5" fill="#fff" opacity="0.7"/>
+      <circle cx="160" cy="75" r="4"  fill="#fff" opacity="0.85"/>
+      <text x="118" y="58" font-size="22" fill="#fff" opacity="0.7" font-family="Dekko,cursive">z</text>
+      <text x="132" y="42" font-size="16" fill="#fff" opacity="0.5" font-family="Dekko,cursive">z</text>
+      <text x="143" y="30" font-size="12" fill="#fff" opacity="0.35" font-family="Dekko,cursive">z</text>
+    </svg>
+    <p class="sous-titre">Le sommeil est le superpouvoir gratuit que tu n'utilises peut-être pas assez.</p>
+  </div>
+  <div class="grille">
+    <div class="carte"><span class="carte-icon">🧠</span><h3>Mémoire & concentration</h3><p>Pendant le sommeil, ton cerveau trie et classe tout ce que tu as appris dans la journée. Bien dormir = mieux mémoriser.</p></div>
+    <div class="carte"><span class="carte-icon">💪</span><h3>Croissance & récupération</h3><p>L'hormone de croissance est sécrétée la nuit. Tes muscles se réparent et se renforcent pendant que tu dors.</p></div>
+    <div class="carte"><span class="carte-icon">😊</span><h3>Humeur & énergie</h3><p>Une bonne nuit réduit le stress et l'anxiété. Tu seras plus souriant, plus patient et plus efficace toute la journée.</p></div>
+    <div class="carte"><span class="carte-icon">🛡️</span><h3>Immunité renforcée</h3><p>Ton corps produit des anticorps pendant la nuit. Bien dormir aide ton organisme à combattre les maladies.</p></div>
+    <div class="carte"><span class="carte-icon">📵</span><h3>Écrans & sommeil</h3><p>La lumière bleue des écrans bloque la mélatonine. Évite les écrans au moins 1h avant de te coucher.</p></div>
+    <div class="carte"><span class="carte-icon">🌡️</span><h3>Chambre idéale</h3><p>Une chambre fraîche (18–20°C), silencieuse et sombre favorise un endormissement rapide et un sommeil profond.</p></div>
+  </div>
+  <div class="section-bloc">
+    <h2>⏰ Heures recommandées selon l'âge</h2>
+    <table>
+      <tr><th>Âge</th><th>Heures recommandées</th><th>Conseil</th></tr>
+      <tr><td>6–12 ans</td><td>9 à 12 heures</td><td>Heure fixe de coucher</td></tr>
+      <tr><td>13–18 ans</td><td>8 à 10 heures</td><td>Éviter les écrans la nuit</td></tr>
+      <tr><td>18–25 ans</td><td>7 à 9 heures</td><td>Sieste de 20 min si besoin</td></tr>
+      <tr><td>26–64 ans</td><td>7 à 9 heures</td><td>Horaires réguliers</td></tr>
+      <tr><td>65 ans et +</td><td>7 à 8 heures</td><td>Éviter les somnifères</td></tr>
+    </table>
+  </div>
+  <div class="section-bloc">
+    <h2>🔄 Les 4 phases du sommeil</h2>
+    <div class="phase-ligne"><div class="phase-num">1</div><div class="phase-texte"><strong>Endormissement (5–10 min)</strong><p>Ton corps se détend, ta respiration ralentit. Tu peux encore te réveiller facilement.</p></div></div>
+    <div class="phase-ligne"><div class="phase-num">2</div><div class="phase-texte"><strong>Sommeil léger (20 min)</strong><p>Ta température corporelle baisse, ton rythme cardiaque ralentit.</p></div></div>
+    <div class="phase-ligne"><div class="phase-num">3</div><div class="phase-texte"><strong>Sommeil profond (40–60 min)</strong><p>La phase la plus réparatrice. Ton corps produit l'hormone de croissance et répare tes muscles.</p></div></div>
+    <div class="phase-ligne"><div class="phase-num">4</div><div class="phase-texte"><strong>Sommeil paradoxal / REM</strong><p>Tu rêves ! Ton cerveau traite les émotions et consolide ta mémoire. Le cycle recommence.</p></div></div>
+  </div>
+</body>
+</html>
