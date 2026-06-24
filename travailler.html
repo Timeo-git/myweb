@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💼 Travailler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dekko&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    :root { --rose: #f4afab; --police: "Dekko", cursive; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--police);
+      background: linear-gradient(160deg, #7a1520 0%, #c43050 40%, #f4afab 100%);
+      min-height: 100vh; color: #fff; padding: 2rem;
+    }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 800px; margin: 0 auto 2.5rem auto;
+    }
+    h1 { font-size: 2.4rem; text-shadow: 1px 2px 0 rgba(0,0,0,0.2); }
+    .btn-retour {
+      font-family: var(--police); background: rgba(255,255,255,0.2);
+      color: #fff; border: 2px solid rgba(255,255,255,0.4);
+      padding: 10px 24px; border-radius: 50px;
+      text-decoration: none; font-size: 1rem; transition: background 0.2s;
+    }
+    .btn-retour:hover { background: rgba(255,255,255,0.35); }
+    .hero-section { text-align: center; max-width: 800px; margin: 0 auto 2.5rem auto; }
+    .sous-titre { font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-top: 0.5rem; }
+    .grille {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; max-width: 800px; margin: 0 auto 2.5rem auto;
+    }
+    .carte {
+      background: rgba(255,255,255,0.15); border-radius: 20px; padding: 1.5rem;
+      backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .carte:hover { transform: translateY(-5px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    .carte-icon { font-size: 2.2rem; margin-bottom: 0.6rem; display: block; }
+    .carte h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: #fff0f0; }
+    .carte p { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.5; }
+    .section-bloc {
+      max-width: 800px; margin: 0 auto 2.5rem auto;
+      background: rgba(255,255,255,0.12); border-radius: 20px;
+      padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .section-bloc h2 { font-size: 1.5rem; margin-bottom: 1.2rem; color: #fff0f0; }
+    /* Timer */
+    .pomodoro-section {
+      max-width: 800px; margin: 0 auto 2.5rem auto;
+      background: rgba(255,255,255,0.12); border-radius: 20px;
+      padding: 1.8rem; border: 1px solid rgba(255,255,255,0.2); text-align: center;
+    }
+    .pomodoro-section h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff0f0; }
+    .timer-mode { display: flex; gap: 0.8rem; justify-content: center; margin-bottom: 1.2rem; }
+    .mode-btn {
+      font-family: var(--police); font-size: 0.95rem; padding: 7px 18px;
+      border-radius: 50px; cursor: pointer; border: none;
+      background: rgba(255,255,255,0.15); color: #fff; transition: background 0.2s;
+    }
+    .mode-btn.actif { background: rgba(255,255,255,0.4); font-weight: bold; }
+    .timer-display {
+      font-size: 4rem; font-weight: bold; color: #fff;
+      background: rgba(0,0,0,0.25); border-radius: 16px;
+      padding: 1rem 2.5rem; display: inline-block;
+      margin-bottom: 1.2rem; letter-spacing: 4px;
+    }
+    .timer-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .tbtn {
+      font-family: var(--police); font-size: 1.1rem;
+      padding: 10px 28px; border: none; border-radius: 50px;
+      cursor: pointer; transition: transform 0.15s;
+    }
+    .tbtn:hover { transform: scale(1.05); }
+    .tbtn-start { background: #fff; color: #c43050; }
+    .tbtn-pause { background: rgba(255,255,255,0.3); color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+    .tbtn-reset { background: rgba(0,0,0,0.2); color: #fff; border: 2px solid rgba(255,255,255,0.3); }
+    .timer-label { font-size: 1rem; color: rgba(255,255,255,0.75); margin-top: 0.8rem; }
+    /* Matrice */
+    .matrice-labels { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 0.4rem; text-align: center; }
+    .matrice-labels span { font-size: 0.9rem; color: rgba(255,255,255,0.7); font-weight: bold; }
+    .matrice { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .quad { border-radius: 12px; padding: 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+    .quad strong { font-size: 1rem; display: block; margin-bottom: 0.3rem; }
+    .quad p { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.4; }
+    .quad-do   { border-left: 4px solid #9ee493; }
+    .quad-plan { border-left: 4px solid #85c7f2; }
+    .quad-del  { border-left: 4px solid #fabc3c; }
+    .quad-drop { border-left: 4px solid rgba(255,255,255,0.3); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💼 Travailler</h1>
+    <a href="index.html" class="btn-retour">⬅️ Accueil</a>
+  </header>
+  <div class="hero-section">
+    <svg width="200" height="130" viewBox="0 0 200 130" fill="none">
+      <rect x="10" y="90" width="180" height="10" rx="5" fill="#fff" opacity="0.3"/>
+      <rect x="20" y="100" width="8" height="28" rx="4" fill="#fff" opacity="0.2"/>
+      <rect x="172" y="100" width="8" height="28" rx="4" fill="#fff" opacity="0.2"/>
+      <rect x="55" y="40" width="90" height="52" rx="8" fill="#fff" opacity="0.15"/>
+      <rect x="59" y="44" width="82" height="44" rx="6" fill="#1a1a4e" opacity="0.7"/>
+      <rect x="63" y="50" width="30" height="4" rx="2" fill="#f4afab" opacity="0.8"/>
+      <rect x="63" y="58" width="50" height="4" rx="2" fill="#85c7f2" opacity="0.7"/>
+      <rect x="63" y="66" width="38" height="4" rx="2" fill="#9ee493" opacity="0.7"/>
+      <rect x="63" y="74" width="44" height="4" rx="2" fill="#fabc3c" opacity="0.7"/>
+      <rect x="93" y="92" width="14" height="8" rx="2" fill="#fff" opacity="0.2"/>
+      <rect x="85" y="98" width="30" height="4" rx="2" fill="#fff" opacity="0.15"/>
+      <rect x="155" y="74" width="22" height="18" rx="6" fill="#fff" opacity="0.25"/>
+      <path d="M177 80 Q187 80 187 87 Q187 92 177 92" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.3"/>
+      <path d="M160 72 Q162 66 160 60" stroke="#fff" stroke-width="2" fill="none" opacity="0.4" stroke-linecap="round"/>
+    </svg>
+    <p class="sous-titre">Travailler intelligemment, c'est autant une question de méthode que d'effort.</p>
+  </div>
+  <div class="grille">
+    <div class="carte"><span class="carte-icon">⏱️</span><h3>Technique Pomodoro</h3><p>25 min de travail intense, 5 min de pause. Après 4 cycles, une grande pause de 20 min. Essaie le timer ci-dessous !</p></div>
+    <div class="carte"><span class="carte-icon">🖥️</span><h3>Espace de travail</h3><p>Bureau rangé, bonne lumière, chaise confortable, notifications coupées. Ton environnement impacte ta concentration.</p></div>
+    <div class="carte"><span class="carte-icon">📋</span><h3>Liste de tâches</h3><p>Écris tes 3 tâches prioritaires au réveil. Commence par la plus difficile. Coche au fur et à mesure !</p></div>
+    <div class="carte"><span class="carte-icon">📵</span><h3>Couper les distractions</h3><p>Le téléphone est l'ennemi n°1 de la concentration. Mode avion pendant les sessions de travail.</p></div>
+    <div class="carte"><span class="carte-icon">☕</span><h3>Les pauses intelligentes</h3><p>Une pause n'est pas du temps perdu. Se lever, s'étirer, boire de l'eau — ton cerveau en a besoin.</p></div>
+    <div class="carte"><span class="carte-icon">🎵</span><h3>Musique & concentration</h3><p>La musique instrumentale ou lo-fi peut améliorer la concentration. Évite les paroles si tu lis ou écris.</p></div>
+  </div>
+  <div class="pomodoro-section">
+    <h2>⏱️ Timer Pomodoro interactif</h2>
+    <div class="timer-mode">
+      <button class="mode-btn actif" id="mode-travail">💼 Travail (25 min)</button>
+      <button class="mode-btn" id="mode-pause">☕ Pause (5 min)</button>
+    </div>
+    <div class="timer-display" id="timer">25:00</div>
+    <div class="timer-btns">
+      <button class="tbtn tbtn-start" id="btn-start">▶ Démarrer</button>
+      <button class="tbtn tbtn-pause" id="btn-pause">⏸ Pause</button>
+      <button class="tbtn tbtn-reset" id="btn-reset">↺ Reset</button>
+    </div>
+    <p class="timer-label" id="timer-label">Prêt à te concentrer ? Lance le timer !</p>
+  </div>
+  <div class="section-bloc">
+    <h2>🎯 Matrice d'Eisenhower</h2>
+    <div class="matrice-labels"><span>⚡ Urgent</span><span>🕐 Pas urgent</span></div>
+    <div class="matrice">
+      <div class="quad quad-do"><strong>✅ FAIRE maintenant</strong><p>Important + Urgent — Examen demain, devoir à rendre</p></div>
+      <div class="quad quad-plan"><strong>📅 PLANIFIER</strong><p>Important + Pas urgent — Révisions, sport, projets long terme</p></div>
+      <div class="quad quad-del"><strong>👤 DÉLÉGUER</strong><p>Urgent + Pas important — Certains emails, appels mineurs</p></div>
+      <div class="quad quad-drop"><strong>🗑️ ÉLIMINER</strong><p>Ni urgent ni important — Scroll sans fin, distractions pures</p></div>
+    </div>
+  </div>
+  <script>
+    let duree = 25*60, restant = duree, interval = null, enCours = false;
+    function afficher(s) {
+      $("#timer").text(String(Math.floor(s/60)).padStart(2,'0')+":"+String(s%60).padStart(2,'0'));
+    }
+    $("#btn-start").click(function(){
+      if(!enCours){ enCours=true; $("#timer-label").text("🔥 En plein travail ! Reste concentré.");
+        interval=setInterval(function(){ restant--; afficher(restant);
+          if(restant<=0){ clearInterval(interval); enCours=false; $("#timer-label").text("🎉 Temps écoulé ! Prends une pause."); }
+        },1000); }
+    });
+    $("#btn-pause").click(function(){ clearInterval(interval); enCours=false; $("#timer-label").text("⏸ En pause. Reprends quand tu es prêt !"); });
+    $("#btn-reset").click(function(){ clearInterval(interval); enCours=false; restant=duree; afficher(restant); $("#timer-label").text("Prêt à te concentrer ? Lance le timer !"); });
+    $("#mode-travail").click(function(){ clearInterval(interval); enCours=false; duree=25*60; restant=duree; afficher(restant); $(".mode-btn").removeClass("actif"); $(this).addClass("actif"); });
+    $("#mode-pause").click(function(){ clearInterval(interval); enCours=false; duree=5*60; restant=duree; afficher(restant); $(".mode-btn").removeClass("actif"); $(this).addClass("actif"); });
+  </script>
+</body>
+</html>
